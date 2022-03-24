@@ -1,12 +1,18 @@
 from PIL import ImageGrab
+from pynput import keyboard
 
 sprawko_name = "LABX_test.txt"
+section_number = 1
+screen_number = 1
 
 
-def save_as(name):
+def save_as():
+    global screen_number
+    name = "ZAD{}_{}".format(section_number, screen_number)
     im = ImageGrab.grabclipboard()
     im.save('{}.png'.format(name), 'PNG')
-    # write_in_latex(name)
+    write_in_latex(name)
+    screen_number += 1
 
 
 def write_in_latex(name):
@@ -18,5 +24,4 @@ def write_in_latex(name):
     file.close()
 
 
-# save_as("pierwsze_zdj")
-write_in_latex("pierwsze.png")
+save_as()
